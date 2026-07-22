@@ -1,0 +1,5 @@
+com\paynest\domain\OrderItem.class
+com\paynest\domain\Order.class
+com\paynest\domain\Product.class
+com\paynest\domain\Customer.class
+com\paynest\app\PayNestApplication.class

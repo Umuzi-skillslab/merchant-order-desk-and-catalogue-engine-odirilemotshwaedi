@@ -38,8 +38,9 @@ public class Order {
             OrderItem item = new OrderItem(product, quantity);
             orderItem.add(item);
             return orderItem.size();
-        }else{
-            return -1;
+            }
+        else{
+            throw new IllegalArgumentException("The number of products must be grater than 0");
         }
     }
 

@@ -69,6 +69,9 @@ Thank You For Shopping With Us
 
 ```
 src/main/java/com/paynest/
-├──domain/       # Core business objects (Product, Customer, OrderItem, Order)
-└── app/         # CLI application entry point (PayNestApplication)
+├──main
+      ├──java
+            ├──app/         # CLI application entry point (PayNestApplication)
+            └── domain/     # Core business objects (Product, Customer, OrderItem, Order)
+
 ```
