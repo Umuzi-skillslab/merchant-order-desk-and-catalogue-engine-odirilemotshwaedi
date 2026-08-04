@@ -18,7 +18,7 @@ public class ReceiptPrinter {
         System.out.println("-----------------------------------");
         System.out.println("\t\u001B[1mOrder Items");
         System.out.println("----------------------------------");
-        System.out.println(order.OrderSummary());
+        System.out.println(order.printSummary());
     }
 
 }

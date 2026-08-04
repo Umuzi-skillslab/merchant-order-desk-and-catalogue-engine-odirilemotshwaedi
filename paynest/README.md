@@ -19,10 +19,9 @@ PayNest is a early stage South African fintech company providing a simplified co
 
 ## How to Run the Project
 
-### Prerequisites
-
-- Java 21
-- Maven 3.6+
+### Requirements
+- Java 21 (JDK 21)
+- Maven 3.9+
 
 ### Build and Run
 
