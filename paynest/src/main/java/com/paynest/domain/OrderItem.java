@@ -1,12 +1,24 @@
 package com.paynest.domain;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 //Class order item
 public class OrderItem {
         private Product product;
         private int quantity;
 
+        public OrderItem(){
+        }
+        
         //Constructor
         public OrderItem(Product product, int quantity) {
+            if(quantity <= 0){
+                throw new IllegalArgumentException("The quantity of products must be greater than 0");
+            }
+            if(product == null){
+                throw new NullPointerException("Product cannot be null");
+            }
             this.product = product;
             this.quantity = quantity;
         }
@@ -25,7 +37,7 @@ public class OrderItem {
         }
 
         //Function to calculate the total amount of items per quantity
-        public double calculateTotal() {
-            return product.getPrice() * quantity;
+        public BigDecimal calculateTotal() {
+            return  product.getPrice().multiply(BigDecimal.valueOf(quantity)).setScale(2, RoundingMode.HALF_UP);
         }
-    }
+}

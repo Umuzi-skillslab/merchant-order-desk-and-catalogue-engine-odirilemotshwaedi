@@ -40,7 +40,7 @@ mvn exec:java
 Alternatively:
 
 ```bash
-mvn compile exec:java -Dexec.mainClass="com.paynestsystem.app.PayNestApplication"
+mvn clean compile exec:java
 ```
 
 ### Expected Output
@@ -53,25 +53,19 @@ Customer Name: John Doe
 Customer Email: *************
 -----------------------------------
         Order Items
------------------------------------
-Laptop x 1 = R12000.0
-Smartphone x 2 = R16000.0
-Headphones x 1 = R1000.0
------------------------------------
-Total Amount For 4 Items: R29000.0
------------------------------------
-Thank You For Shopping With Us 
-    Go to www.paynest.co.za 
-       Tel: 012 559 0509
+----------------------------------
+Laptop x (Qty)1 = R12 000,00
+Smartphone x (Qty)2 = R16 000,00
+Headphones x (Qty)1 = R1 000,00
+----------------------------------
+Grand Total: R29 000,00
 ```
 
 ## Project Structure
 
 ```
-src/main/java/com/paynest/
-├──main
-      ├──java
-            ├──app/         # CLI application entry point (PayNestApplication)
-            └── domain/     # Core business objects (Product, Customer, OrderItem, Order)
-
+src\main\java\com\paynest\
+├──app\         # CLI application entry point (PayNestApplication)
+├──domain\    # Core business objects (Product, Customer, OrderItem, Order, ReceiptPrinter)
+└──Service\     #OrderService
 ```

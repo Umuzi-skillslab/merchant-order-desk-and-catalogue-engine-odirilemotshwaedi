@@ -1,19 +1,24 @@
 package com.paynest.domain;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 //Order class
 public class Order {
     private int id;
-    private Customer customer; 
-    private List<OrderItem> orderItem;
+    private Customer customer;
+    private List<OrderItem> orderItem = new ArrayList<>();
+
+    public Order(){
+    }
 
     // Constructor
     public Order(int id, Customer customer) {
         this.id = id;
         this.customer = customer;
-        this.orderItem = new ArrayList<>();
     }
 
     // Getters and Setters
@@ -29,50 +34,36 @@ public class Order {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+    public List<OrderItem> getOrderItem(){
+        return orderItem;
+    }
 
-    
-    // Method to add item to order
-    public int addItem(Product product, int quantity){
-        // Add item to order list
-        if(quantity > 0){
-            OrderItem item = new OrderItem(product, quantity);
-            orderItem.add(item);
-            return orderItem.size();
-            }
-        else{
-            throw new IllegalArgumentException("The number of products must be grater than 0");
+    //Method to add item to order
+
+    public void addItem(Product product, int quantity){
+        if(quantity <= 0){
+            throw new IllegalArgumentException("The number of products must be greater than 0");
         }
+        orderItem.add(new OrderItem(product, quantity));
     }
 
     //method to calculate total order amount
-    public double calculateTotalAmount(){
-        double totalAmount = 0.0;
+    public BigDecimal calculateTotalAmount(){
+        BigDecimal totalAmount = BigDecimal.ZERO;
         for(OrderItem item : orderItem){
-            totalAmount += item.calculateTotal();
+            totalAmount = totalAmount.add(item.calculateTotal());
         }
-        return totalAmount;
+        return totalAmount.setScale(2,RoundingMode.HALF_UP);
     }
 
-     //method to display order details
-    public void displayOrderDetails(){
-        int totalOrders = 0;
+    NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
 
-        System.out.println("\t\u001B[1mPayNest");
-        System.out.println("-----------------------------------");
-        System.out.println("Order Number: " + id);
-        System.out.println("Customer Name: " + customer.getName());
-        System.out.println("Customer Email: *************");
-        System.out.println("-----------------------------------");
-        System.out.println("\t\u001B[1mOrder Items");
-        System.out.println("-----------------------------------");
+    public String OrderSummary(){
+        StringBuilder summary = new StringBuilder();
         for(OrderItem item : orderItem){
-            System.out.println(""+ item.getProduct().getName() + " x " + item.getQuantity() + " = R" + item.calculateTotal());
-            totalOrders = totalOrders+ item.getQuantity() ;
-        } 
-        System.out.println("-----------------------------------");
-        System.out.println("Total Amount For "+totalOrders+" Items: R" + calculateTotalAmount());
-        System.out.println("-----------------------------------");
-        System.out.println("Thank You For Shopping With Us \n    Go to www.paynest.co.za \n       Tel: 012 559 0509");
+            summary.append(item.getProduct().getName()).append(" x (Qty)").append(item.getQuantity()).append(" = ").append(currencyFormatter.format(item.calculateTotal())).append("\n");
+        }
+        summary.append("----------------------------------\n").append("Grand Total: ").append(currencyFormatter.format(calculateTotalAmount())).append("\n");
+        return summary.toString();
     }
-
-} 
+}
