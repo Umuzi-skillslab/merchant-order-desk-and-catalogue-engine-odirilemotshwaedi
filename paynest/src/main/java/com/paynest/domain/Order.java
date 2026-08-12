@@ -1,6 +1,5 @@
 package com.paynest.domain;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
@@ -13,8 +12,14 @@ public class Order {
     private Customer customer;
     private List<OrderItem> orderItem = new ArrayList<>();
 
+    //Default Constructor
+    public Order(){
+    }
     // Constructor
     public Order(int id, Customer customer) {
+        if (customer == null) {
+            throw new NullPointerException("Customer cannot be null");
+        }
         this.id = id;
         this.customer = customer;
     }
@@ -33,9 +38,11 @@ public class Order {
         this.customer = customer;
     }
 
-    
     //Method to add item to order
     public void addItem(Product product, int quantity){
+        if (product == null) {
+            throw new NullPointerException("Product cannot be null");
+        }
         if(quantity <= 0){
             throw new IllegalArgumentException("The number of products must be greater than 0");
         }
@@ -53,16 +60,5 @@ public class Order {
 
     public List<OrderItem> getOrderItems() {
         return Collections.unmodifiableList(orderItem);
-    }
-    
-    NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
-
-    public String printSummary(){
-        StringBuilder summary = new StringBuilder();
-        for(OrderItem item : orderItem){
-            summary.append(item.getProduct().getName()).append(" x (Qty)").append(item.getQuantity()).append(" = ").append(currencyFormatter.format(item.calculateTotal())).append("\n");
-        }
-        summary.append("----------------------------------\n").append("Grand Total: ").append(currencyFormatter.format(calculateTotalAmount())).append("\n");
-        return summary.toString();
     }
 }

@@ -1,8 +1,6 @@
 # PayNest
 
-PayNest is an early-stage South African fintech building lightweight commerce tools for small
-merchants who sell hardware and accessories online and at markets. They cannot afford
-Shopify-scale subscriptions but still need consistent pricing, order totals, and customer-linked receipts before any payment integration exists.
+PayNest is an early-stage South African fintech building lightweight commerce tools for small merchants who sell hardware and accessories online and at markets. They cannot afford Shopify-scale subscriptions but still need consistent pricing, order totals, and customer-linked receipts before any payment integration exists.
 
 ## Project Overview
 
@@ -13,44 +11,37 @@ PayNest is a fictional platform that allows merchants to:
 - Create orders and add products
 - Prints a receipt with a summary of their details, orders and total amounts.
 
-## Company Background
 
-PayNest is a early stage South African fintech company providing a simplified commerce backend. The platform enables merchants to manage their orders, supplies them with totals of those orders and provides them with a receipt as proof.
+## Prerequisites
 
-## How to Run the Project
-
-### Requirements
 - Java 21 (JDK 21)
-- Maven 3.9+
+- Maven 3.6+ (3.9+ recommended)
+- Optical: VS Code setup if that your preferred IDE.
 
-### Build and Run
+## Build and run
 
 ```bash
-# Compile the project
+# compile
+mvn clean install
 mvn compile
 
-# Run unit tests
+# run unit tests
 mvn test
 
-# Run the application
+# run the application
 mvn exec:java
+
 ```
 
-Alternatively:
-
-```bash
-mvn clean compile exec:java
-```
-
-### Expected Output
+Expected output (example):
 
 ```
         PayNest
------------------------------------
+----------------------------------
 Order Number: 1
 Customer Name: John Doe
 Customer Email: *************
------------------------------------
+----------------------------------
         Order Items
 ----------------------------------
 Laptop x (Qty)1 = R12 000,00
@@ -60,11 +51,26 @@ Headphones x (Qty)1 = R1 000,00
 Grand Total: R29 000,00
 ```
 
-## Project Structure
+## Unit Tests cover
+- OrderItem.calculateTotal
+- Order.calculateTotalAmount
+- Validation for zero/negative/null products
+- Empty order behavior
+- Receipt rendering regression check
+
+## Project structure
 
 ```
-src\main\java\com\paynest\
-├──app\         # CLI application entry point (PayNestApplication)
-├──domain\    # Core business objects (Product, Customer, OrderItem, Order, ReceiptPrinter)
-└──Service\     #OrderService
+src/main/java/com/paynest/
+├── app/        # CLI application entry point (PayNestApplication)
+├── domain/     # Core business objects (Product, Customer, OrderItem, Order)
+└── service/    # Application services (OrderService, ReceiptPrinter)
 ```
+
+Notes about recent hygiene changes
+- `Product` uses BigDecimal for prices and normalizes to 2 decimal places.
+- `OrderItem` is immutable and validates `product != null` and `quantity > 0`.
+- `Order` validates non-null `Customer` at construction and non-null `Product` when adding items.
+- `ReceiptPrinter` no longer writes directly to System.out; it renders into a provided StringBuilder (`render`) so I/O can be handled at the application boundary.
+
+These changes improve numeric safety (money handling), make domain objects safer to reason about, and separate I/O from domain logic to ease testing and future integrations.

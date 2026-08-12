@@ -6,11 +6,18 @@ public class Customer {
     private String name;
     private String email;
 
-    public Customer(){
-    }
-
     // Constructor
     public Customer(int id, String name, String email) {
+        if(id == 0){
+            throw new IllegalArgumentException("Customer Id must be greater than 0");
+        }
+        if(name == null){
+            throw new NullPointerException("Customer name cannot be null");
+        }
+        if(email == null){
+            email = "No email address";
+        }
+        
         this.id = id;
         this.name = name;
         this.email = email;
