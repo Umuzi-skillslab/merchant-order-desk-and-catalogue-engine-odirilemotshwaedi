@@ -6,7 +6,7 @@ import java.math.RoundingMode;
 public final class OrderItem {
     private final Product product;
     private final int quantity;
-
+    //constructor
     public OrderItem(Product product, int quantity) {
         if (product == null) {
             throw new NullPointerException("Product cannot be null");
@@ -17,7 +17,7 @@ public final class OrderItem {
         this.product = product;
         this.quantity = quantity;
     }
-
+    //Getter methods
     public Product getProduct() {
         return product;
     }
@@ -25,7 +25,7 @@ public final class OrderItem {
     public int getQuantity() {
         return quantity;
     }
-
+    //Calculate the total amount of items added
     public BigDecimal calculateTotal() {
         return product.getPrice().multiply(BigDecimal.valueOf(quantity)).setScale(2, RoundingMode.HALF_UP);
     }

@@ -1,7 +1,9 @@
 com\paynest\domain\Order.class
 com\paynest\domain\Product.class
+com\paynest\service\CatalogueService.class
+com\paynest\service\ReceiptService.class
 com\paynest\service\OrderService.class
+com\paynest\domain\ReceiptPrinter.class
 com\paynest\domain\OrderItem.class
 com\paynest\domain\Customer.class
-com\paynest\service\ReceiptPrinter.class
 com\paynest\app\PayNestApplication.class

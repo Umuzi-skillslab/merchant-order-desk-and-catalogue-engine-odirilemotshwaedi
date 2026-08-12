@@ -8,14 +8,13 @@ public class Customer {
 
     // Constructor
     public Customer(int id, String name, String email) {
-        if(id == 0){
+        //throws and error if customer id is less than or equal to 0
+        if(id <= 0){
             throw new IllegalArgumentException("Customer Id must be greater than 0");
         }
+        //Throws an error if customer name is null
         if(name == null){
             throw new NullPointerException("Customer name cannot be null");
-        }
-        if(email == null){
-            email = "No email address";
         }
         
         this.id = id;

@@ -12,17 +12,15 @@ public class PayNestApplication {
         Product product1 = new Product(1,"Laptop", 12000);
         Product product2 = new Product(2,"Smartphone", 8000);
         Product product3 = new Product(3,"Headphones", 1000);
-        Product product4 = new Product(4, "tt", 90);
 
         // Catalogue and services
         CatalogueService catalogue = new CatalogueService();
         catalogue.addProduct(product1);
         catalogue.addProduct(product2);
         catalogue.addProduct(product3);
-        catalogue.addProduct(product4);
 
         // Create customer and order via service
-        Customer customer = new Customer(1, "John Doe",null);
+        Customer customer = new Customer(1, "John Doe","john.doe@example.com");
         OrderService service = new OrderService();
         Order order = service.createOrder(1, customer);
 

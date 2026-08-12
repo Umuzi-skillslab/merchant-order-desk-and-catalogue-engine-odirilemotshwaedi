@@ -40,7 +40,7 @@ Expected output (example):
 ----------------------------------
 Order Number: 1
 Customer Name: John Doe
-Customer Email: *************
+Customer Email: john.doe@example.com
 ----------------------------------
         Order Items
 ----------------------------------

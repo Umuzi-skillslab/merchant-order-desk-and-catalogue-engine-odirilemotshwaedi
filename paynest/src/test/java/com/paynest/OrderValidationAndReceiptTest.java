@@ -53,7 +53,7 @@ class OrderValidationAndReceiptTest {
         assertEquals(BigDecimal.valueOf(0.00).setScale(2), order.calculateTotalAmount());
         assertTrue(order.getOrderItems().isEmpty());
     }
-
+    //Tests if the expected receipt results will match that of the receipt
     @Test
     void testReceiptRendering() {
         OrderService service = new OrderService();
