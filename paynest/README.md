@@ -63,8 +63,8 @@ Grand Total: R29 000,00
 ```
 src/main/java/com/paynest/
 ├── app/        # CLI application entry point (PayNestApplication)
-├── domain/     # Core business objects (Product, Customer, OrderItem, Order)
-└── service/    # Application services (OrderService, ReceiptPrinter)
+├── domain/     # Core business objects (Product, Customer, OrderItem, Order, ReceiptPrinter)
+└── service/    # Application services (CatalogueService, OrderService, ReceiptService)
 ```
 
 Notes about recent hygiene changes
