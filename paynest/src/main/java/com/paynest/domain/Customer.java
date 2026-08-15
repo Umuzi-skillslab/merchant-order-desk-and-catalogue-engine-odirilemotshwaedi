@@ -13,8 +13,11 @@ public class Customer {
             throw new IllegalArgumentException("Customer Id must be greater than 0");
         }
         //Throws an error if customer name is null
-        if(name == null){
-            throw new NullPointerException("Customer name cannot be null");
+        if(name == null || name.isBlank()){
+            throw new IllegalArgumentException("Customer name cannot be blank");
+        }
+        if(email == null || email.isBlank()){
+            throw new IllegalArgumentException("Customer email cannot be blank");
         }
         
         this.id = id;
@@ -27,23 +30,11 @@ public class Customer {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

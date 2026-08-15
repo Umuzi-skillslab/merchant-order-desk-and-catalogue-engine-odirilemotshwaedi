@@ -12,30 +12,21 @@ public class Order {
     private Customer customer;
     private List<OrderItem> orderItem = new ArrayList<>();
 
-    //Default Constructor
-    public Order(){
-    }
     // Constructor
     public Order(int id, Customer customer) {
-        if (customer == null) {
-            throw new NullPointerException("Customer cannot be null");
+        if (id <= 0) {
+            throw new IllegalArgumentException("Order id must be greater than 0");
         }
         this.id = id;
         this.customer = customer;
     }
 
-    // Getters and Setters
+    // Getters
     public int getId() {
         return id;
     }
-    public void setId(int id) {
-        this.id = id;
-    }
     public Customer getCustomer() {
         return customer;
-    }
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
     }
 
     //Method to add item to order
@@ -44,7 +35,7 @@ public class Order {
             throw new NullPointerException("Product cannot be null");
         }
         if(quantity <= 0){
-            throw new IllegalArgumentException("The number of products must be greater than 0");
+            throw new IllegalArgumentException("Quantity must be greater than zero");
         }
         orderItem.add(new OrderItem(product, quantity));
     }

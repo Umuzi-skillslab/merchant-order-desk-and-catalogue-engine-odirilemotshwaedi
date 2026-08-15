@@ -31,6 +31,6 @@ public class PayNestApplication {
 
         // Display order details (render-only)
         ReceiptService receipt = new ReceiptService();
-        receipt.render(order);
+        System.out.println(receipt.render(order));
     }
 }
