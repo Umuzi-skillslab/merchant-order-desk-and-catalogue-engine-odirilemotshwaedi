@@ -27,7 +27,7 @@ public class CatalogueService {
         
         //throws an error if a product id is less or equal to 0
         if (product.getId() <= 0) {
-            throw new NullPointerException("Product id cannot be less than or equal to 0");
+            throw new IllegalArgumentException("Product id must be greater than 0");
         }
         
         //Throws an error if the price of a product is less or equals to 0

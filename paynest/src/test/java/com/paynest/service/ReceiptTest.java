@@ -1,4 +1,4 @@
-package com.paynest;
+package com.paynest.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -27,17 +27,20 @@ public class ReceiptTest {
 
     String expected =
             "\t\u001B[1mPayNest\n" +
-            "----------------------------------\n" +
+            "----------------------------------------\n" +
             "Order Number: 1\n" +
             "Customer Name: Jane Doe\n" +
             "Customer Email: jane@example.com\n" +
-            "----------------------------------\n" +
+            "----------------------------------------\n" +
             "\t\u001B[1mOrder Items\n" +
-            "----------------------------------\n" +
+            "----------------------------------------\n" +
             "Phone x (Qty)2 = R16 000,00\n" +
             "Tablet x (Qty)1 = R2 000,00\n" +
-            "----------------------------------\n" +
-            "Grand Total: R18 000,00";
+            "----------------------------------------\n" +
+            "Grand Total: R18 000,00\n" +
+            "----------------------------------------\n" +
+            "\t\u001B[1mPayment\n" +
+            "----------------------------------------";
 
     assertEquals(expected, receipt);
     }

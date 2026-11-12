@@ -1,11 +1,13 @@
 package com.paynest.app;
 
 import com.paynest.domain.Product;
+
 import com.paynest.domain.Customer;
 import com.paynest.domain.Order;
 import com.paynest.service.OrderService;
 import com.paynest.service.ReceiptService;
 import com.paynest.service.CatalogueService;
+import com.paynest.payment.*;
 
 public class PayNestApplication {
     public static void main(String[] args) {
@@ -32,5 +34,12 @@ public class PayNestApplication {
         // Display order details (render-only)
         ReceiptService receipt = new ReceiptService();
         System.out.println(receipt.render(order));
+
+        //Payment
+        PaymentMethod paymentMethod = new CardPayment();
+        order.checkout(paymentMethod);
+
+        //CheckoutService checkoutService = new CheckoutService();
+        //checkoutService.checkout(order, paymentMethod);
     }
 }

@@ -2,6 +2,10 @@ package com.paynest.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.paynest.payment.PaymentMethod;
+import com.paynest.payment.PaymentProcessor;
+
 import java.util.Collections;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -51,5 +55,28 @@ public class Order {
 
     public List<OrderItem> getOrderItems() {
         return Collections.unmodifiableList(orderItem);
+    }
+
+
+    //Checkout orchestration
+    public boolean checkout(PaymentMethod paymentMethod){
+
+        if (paymentMethod == null) {
+            throw new IllegalArgumentException("Payment method cannot be null");
+        }
+
+        //Pass the selected amount to the payment method
+        PaymentProcessor paymentProcessor = new PaymentProcessor();
+        boolean paymentSuccessful = paymentProcessor.processPayment(paymentMethod, calculateTotalAmount());
+
+        //Order confirmation
+        if(paymentSuccessful){
+
+            System.out.println("Order #" + getId()
+            + " completed successfully via "
+            + paymentMethod.getPaymentType());
+        }
+
+        return paymentSuccessful;
     }
 }

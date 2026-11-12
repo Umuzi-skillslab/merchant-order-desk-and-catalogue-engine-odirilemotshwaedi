@@ -1,4 +1,4 @@
-package com.paynest;
+package com.paynest.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.math.BigDecimal;
