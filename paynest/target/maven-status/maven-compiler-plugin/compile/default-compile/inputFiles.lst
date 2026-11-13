@@ -7,10 +7,10 @@ C:\Users\Odirile Motshwaedi\Programming\Capstone\Capstone2\merchant-order-desk-a
 C:\Users\Odirile Motshwaedi\Programming\Capstone\Capstone2\merchant-order-desk-and-catalogue-engine-odirilemotshwaedi\paynest\src\main\java\com\paynest\service\CatalogueService.java
 C:\Users\Odirile Motshwaedi\Programming\Capstone\Capstone2\merchant-order-desk-and-catalogue-engine-odirilemotshwaedi\paynest\src\main\java\com\paynest\domain\Order.java
 C:\Users\Odirile Motshwaedi\Programming\Capstone\Capstone2\merchant-order-desk-and-catalogue-engine-odirilemotshwaedi\paynest\src\main\java\com\paynest\payment\PaymentProcessor.java
-C:\Users\Odirile Motshwaedi\Programming\Capstone\Capstone2\merchant-order-desk-and-catalogue-engine-odirilemotshwaedi\paynest\src\main\java\com\paynest\service\CheckoutService.java
 C:\Users\Odirile Motshwaedi\Programming\Capstone\Capstone2\merchant-order-desk-and-catalogue-engine-odirilemotshwaedi\paynest\src\main\java\com\paynest\payment\CardPayment.java
 C:\Users\Odirile Motshwaedi\Programming\Capstone\Capstone2\merchant-order-desk-and-catalogue-engine-odirilemotshwaedi\paynest\src\main\java\com\paynest\payment\WalletPayment.java
 C:\Users\Odirile Motshwaedi\Programming\Capstone\Capstone2\merchant-order-desk-and-catalogue-engine-odirilemotshwaedi\paynest\src\main\java\com\paynest\app\PayNestApplication.java
 C:\Users\Odirile Motshwaedi\Programming\Capstone\Capstone2\merchant-order-desk-and-catalogue-engine-odirilemotshwaedi\paynest\src\main\java\com\paynest\service\ReceiptService.java
+C:\Users\Odirile Motshwaedi\Programming\Capstone\Capstone2\merchant-order-desk-and-catalogue-engine-odirilemotshwaedi\paynest\src\main\java\com\paynest\payment\CurrencyFormatter.java
 C:\Users\Odirile Motshwaedi\Programming\Capstone\Capstone2\merchant-order-desk-and-catalogue-engine-odirilemotshwaedi\paynest\src\main\java\com\paynest\domain\Product.java
 C:\Users\Odirile Motshwaedi\Programming\Capstone\Capstone2\merchant-order-desk-and-catalogue-engine-odirilemotshwaedi\paynest\src\main\java\com\paynest\payment\PayPalPayment.java

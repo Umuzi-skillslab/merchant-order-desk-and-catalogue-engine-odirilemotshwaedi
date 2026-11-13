@@ -7,7 +7,8 @@ import com.paynest.domain.Order;
 import com.paynest.service.OrderService;
 import com.paynest.service.ReceiptService;
 import com.paynest.service.CatalogueService;
-import com.paynest.payment.*;
+import com.paynest.payment.PaymentMethod;
+import com.paynest.payment.PayPalPayment;
 
 public class PayNestApplication {
     public static void main(String[] args) {
@@ -22,7 +23,7 @@ public class PayNestApplication {
         catalogue.addProduct(product3);
 
         // Create customer and order via service
-        Customer customer = new Customer(1, "John Doe","john.doe@example.com");
+        Customer customer = new Customer(1, "John Doe", "john.doe@example.com");
         OrderService service = new OrderService();
         Order order = service.createOrder(1, customer);
 
@@ -36,10 +37,7 @@ public class PayNestApplication {
         System.out.println(receipt.render(order));
 
         //Payment
-        PaymentMethod paymentMethod = new CardPayment();
+        PaymentMethod paymentMethod = new PayPalPayment();
         order.checkout(paymentMethod);
-
-        //CheckoutService checkoutService = new CheckoutService();
-        //checkoutService.checkout(order, paymentMethod);
     }
 }

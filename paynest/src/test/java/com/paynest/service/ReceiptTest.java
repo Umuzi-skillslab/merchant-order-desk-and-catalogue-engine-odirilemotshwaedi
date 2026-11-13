@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import com.paynest.domain.Customer;
 import com.paynest.domain.Product;
-import com.paynest.service.ReceiptService;
 import com.paynest.domain.Order;
 public class ReceiptTest {
      

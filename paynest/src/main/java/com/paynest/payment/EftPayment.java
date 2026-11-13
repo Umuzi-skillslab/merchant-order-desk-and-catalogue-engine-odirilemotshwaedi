@@ -1,13 +1,14 @@
 package com.paynest.payment;
 
 import java.math.BigDecimal;
-//import java.math.RoundingMode;
-import java.text.NumberFormat;
-import java.util.Locale;
+
+/**
+ * Handles simulated EFT payments
+ * Implements the shared PaymentMethod interface to ensure
+ * EFT follows the same payment contract as other methods.
+ */
 
 public class EftPayment implements PaymentMethod {
-    
-    private static final NumberFormat RAND_FORMATTER = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("en-ZA"));
 
     @Override
     public boolean processPayment(BigDecimal amount){
@@ -16,7 +17,7 @@ public class EftPayment implements PaymentMethod {
         }
 
         System.out.println("Processing EFT payment for "
-            + RAND_FORMATTER.format(amount).replace('\u00A0', ' ')); 
+            + CurrencyFormatter.format(amount));
         return true;
     }
 

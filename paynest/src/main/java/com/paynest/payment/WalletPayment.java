@@ -1,12 +1,14 @@
 package com.paynest.payment;
 
 import java.math.BigDecimal;
-import java.text.NumberFormat;
-import java.util.Locale;
+
+/**
+ * Handles simulated wallet payments
+ * Implements the shared PaymentMethod interface to ensure
+ * Wallet payments follows the same payment contract as other methods.
+ */
 
 public class WalletPayment implements PaymentMethod {
-
-    private static final NumberFormat RAND_FORMATTER = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("en-ZA"));
 
     @Override
     public boolean processPayment(BigDecimal amount){
@@ -15,7 +17,7 @@ public class WalletPayment implements PaymentMethod {
         }
 
         System.out.println("Processing Wallet payment for "
-            + RAND_FORMATTER.format(amount).replace('\u00A0', ' ')); 
+            + CurrencyFormatter.format(amount));
         return true;
     }
 

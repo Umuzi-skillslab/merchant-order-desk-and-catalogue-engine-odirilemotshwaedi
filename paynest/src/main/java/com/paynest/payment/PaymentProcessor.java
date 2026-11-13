@@ -10,6 +10,11 @@ public class PaymentProcessor {
 
     public boolean processPayment(PaymentMethod paymentMethod, BigDecimal amount){
 
+        if (paymentMethod == null || amount == null || amount.compareTo(BigDecimal.ZERO) <= 0){
+            System.out.println("Invalid payment details.");
+            return false;
+        }
+
         boolean success = paymentMethod.processPayment(amount);
 
         if(success) {

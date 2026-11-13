@@ -65,6 +65,11 @@ public class Order {
             throw new IllegalArgumentException("Payment method cannot be null");
         }
 
+        //prevent checkout when the order has no items
+        if(orderItem.isEmpty()){
+            throw new IllegalStateException("Cannot checkout an empty order");
+        }
+
         //Pass the selected amount to the payment method
         PaymentProcessor paymentProcessor = new PaymentProcessor();
         boolean paymentSuccessful = paymentProcessor.processPayment(paymentMethod, calculateTotalAmount());
