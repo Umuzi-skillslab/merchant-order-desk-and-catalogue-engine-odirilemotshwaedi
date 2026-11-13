@@ -42,10 +42,6 @@ cd PayNest
 
 mvn compile
 
-# Run the automated tests
-
-mvn test
-
 # Start the application
 
 mvn exec:java
