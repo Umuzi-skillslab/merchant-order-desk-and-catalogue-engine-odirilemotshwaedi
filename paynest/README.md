@@ -86,43 +86,44 @@ Order #1 completed successfully via CARD
 
 PayNest/
 │
-src/
-└── main/
-    └── java/
-        └── com/paynest/
-            ├── app/
-            │   └── PayNestApplication.java
-            │
-            ├── domain/
-            │   ├── Product.java
-            │   ├── Customer.java
-            │   ├── Order.java
-            │   └── OrderItem.java
-            │
-            ├── payment/
-            │   ├── PaymentMethod.java
-            │   ├── PaymentProcessor.java
-            │   ├── CardPayment.java
-            │   ├── WalletPayment.java
-            │   ├── PayPalPayment.java
-            │   ├── EftPayment.java
-            │   └── CurrencyFormatter.java
-            │
-            └── service/
-                ├── CatalogueService.java
-                ├── OrderService.java
-                └── ReceiptService.java
-
-        └── test/
-            └── java/
-                └── com/paynest/
-                    ├── payment/
-                    │   └── TestPaymentMethod.java
-                    │
-                    └── service/
-                        ├── OrderValidationAndReceiptTest.java
-                        ├── PaymentMethodTest.java
-                        └── ReceiptTest.java               
+├── src/
+│   ├── main/
+│   │   └── java/
+│   │       └── com/paynest/
+│   │           ├── app/
+│   │           │   └── PayNestApplication.java
+│   │           │
+│   │           ├── domain/
+│   │           │   ├── Product.java
+│   │           │   ├── Customer.java
+│   │           │   ├── Order.java
+│   │           │   └── OrderItem.java
+│   │           │
+│   │           ├── payment/
+│   │           │   ├── PaymentMethod.java
+│   │           │   ├── PaymentProcessor.java
+│   │           │   ├── CardPayment.java
+│   │           │   ├── WalletPayment.java
+│   │           │   ├── PayPalPayment.java
+│   │           │   ├── EftPayment.java
+│   │           │   └── CurrencyFormatter.java
+│   │           │
+│   │           └── service/
+│   │               ├── CatalogueService.java
+│   │               ├── OrderService.java
+│   │               └── ReceiptService.java
+│   │
+│   └── test/
+│       └── java/
+│           └── com/paynest/
+│               ├── payment/
+│               │   └── TestPaymentMethod.java
+│               │
+│               └── service/
+│                   ├── OrderValidationAndReceiptTest.java
+│                   ├── PaymentMethodTest.java
+│                   └── ReceiptTest.java
+│
 ├── pom.xml
 └── README.md
 
