@@ -84,6 +84,7 @@ Order #1 completed successfully via CARD
 
 ## Project structure
 
+```text
 PayNest/
 │
 ├── src/
@@ -126,6 +127,7 @@ PayNest/
 │
 ├── pom.xml
 └── README.md
+```
 
 ## Design notes
 
