@@ -36,7 +36,7 @@ public class PayNestApplication {
         ReceiptService receipt = new ReceiptService();
         System.out.println(receipt.render(order));
 
-        //Payment
+        //Checkout using paypal payment method
         PaymentMethod paymentMethod = new PayPalPayment();
         order.checkout(paymentMethod);
     }

@@ -12,10 +12,13 @@ public class CardPayment implements PaymentMethod {
 
     @Override
     public boolean processPayment(BigDecimal amount){
+
+        //validate payment method
         if(amount == null || amount.compareTo(BigDecimal.ZERO) <= 0){
             return false;
         }
 
+        // Simulate processing a card payment.
         System.out.println("Processing Card payment for "
             + CurrencyFormatter.format(amount));
         return true;

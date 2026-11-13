@@ -12,10 +12,13 @@ public class WalletPayment implements PaymentMethod {
 
     @Override
     public boolean processPayment(BigDecimal amount){
+
+        // Validate the payment amount.
         if(amount == null || amount.compareTo(BigDecimal.ZERO) <= 0){
             return false;
         }
 
+        // Process the wallet payment.
         System.out.println("Processing Wallet payment for "
             + CurrencyFormatter.format(amount));
         return true;

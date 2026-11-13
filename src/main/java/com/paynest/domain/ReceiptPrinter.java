@@ -1,29 +1,32 @@
 package com.paynest.domain;
 
-import java.text.NumberFormat;
-import java.util.Locale;
+import com.paynest.payment.CurrencyFormatter;
 
-//ReceiptPrinter is responsible for formatting order details into a receipt string.
-//Adheres to IO-separation principle by returning strings only, with no side effects.
+//Formats order information as a receipt
 public class ReceiptPrinter {
     private static final String RECEIPT_SEPARATOR = "\n----------------------------------------";
     private static final String BOLD = "\u001B[1m";
-    private static final NumberFormat RAND_FORMATTER = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("en-ZA"));
 
-    //Generates a formatted receipt string for an order.
+    //Build and return a receipt for the order.
     public String displayOrderDetails(Order order) {
+
+        //validate the order
         if (order == null) {
             throw new IllegalArgumentException("Order cannot be null");
         }
+
+        //Ensure the order has a customer.
         if (order.getCustomer() == null) {
             throw new IllegalArgumentException("Order must have a customer");
         }
 
+        //Create the receipt header.
         StringBuilder header = new StringBuilder();
         header.append("\t").append(BOLD)
             .append("PayNest")
             .append(RECEIPT_SEPARATOR);
 
+        //Add customer information
         StringBuilder customerInfo = new StringBuilder();
         customerInfo.append("\n")
             .append("Order Number: ")
@@ -39,6 +42,7 @@ public class ReceiptPrinter {
             .append("Order Items")
             .append(RECEIPT_SEPARATOR);
 
+        //Add order items
         StringBuilder orderItems = new StringBuilder();
         for (OrderItem item : order.getOrderItems()) {
             orderItems.append("\n")
@@ -49,6 +53,7 @@ public class ReceiptPrinter {
                 .append(formatCurrency(item.calculateTotal()));
         }
 
+        //Add the grand total.
         StringBuilder grandTotal = new StringBuilder();
         grandTotal.append(RECEIPT_SEPARATOR)
             .append("\n")
@@ -56,19 +61,22 @@ public class ReceiptPrinter {
             .append(formatCurrency(order.calculateTotalAmount()))
             .append(RECEIPT_SEPARATOR);
 
+        //Add the payment section heading
         StringBuilder paymentBuilder = new StringBuilder();
         paymentBuilder.append("\n")
             .append("\t")
             .append(BOLD).append("Payment")
             .append(RECEIPT_SEPARATOR);
 
+        //Return the complete receipt.
         return header.append(customerInfo)
             .append(orderItems)
             .append(grandTotal)
             .append(paymentBuilder).toString();
     }
 
+    //Format an amount as a South African Rand.
     private String formatCurrency(java.math.BigDecimal amount) {
-        return RAND_FORMATTER.format(amount).replace('\u00A0', ' ');
+        return CurrencyFormatter.format(amount);
     }
 }

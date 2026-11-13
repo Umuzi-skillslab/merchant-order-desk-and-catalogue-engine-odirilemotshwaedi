@@ -12,10 +12,13 @@ public class PayPalPayment implements PaymentMethod{
 
     @Override
     public boolean processPayment(BigDecimal amount){
+
+        // Validate the payment amount.
         if(amount == null || amount.compareTo(BigDecimal.ZERO) <= 0){
             return false;
         }
 
+        // Processing a PayPal payment.
         System.out.println("Processing PayPal payment for "
             + CurrencyFormatter.format(amount));
         return true;

@@ -11,7 +11,7 @@ public class ReceiptService {
         this.printer = new ReceiptPrinter();
     }
 
-    //returnS a receipt asa string
+    //returnS a receipt as a string
     public String render(Order order) {
         if (order == null) {
             throw new IllegalArgumentException("Cannot render receipt for null order"); 
