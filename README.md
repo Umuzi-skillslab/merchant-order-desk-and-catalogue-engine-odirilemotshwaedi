@@ -24,7 +24,7 @@ Important: Payment processing is simulated. The application prints payment resul
 
 ## Requirements
 
-- JDK 25
+- JDK 21
 - Maven 3.9 or later
 
 ## Getting Started
@@ -47,9 +47,7 @@ mvn compile
 mvn exec:java
 ```
 
-The sample application creates a catalogue, builds an order for a customer, prints its receipt, and checks out using the card payment implementation.
-
-The sample application creates a catalogue, builds an order for a customer, prints its receipt, and checks out using the card payment implementation.
+The sample application creates a catalogue, builds an order for a customer, prints its receipt, and checks out using the simulated PayPal implementation.
 
 ### Example output
 
@@ -72,10 +70,10 @@ Grand Total: R29 000,00
 ----------------------------------------
         Payment
 ----------------------------------------
-Processing Card payment for R29 000,00
-Payment successful via CARD
+Processing PayPal payment for R29 000,00
+Payment successful via PAYPAL
 Amount: R29 000,00
-Order #1 completed successfully via CARD
+Order #1 completed successfully via PAYPAL
 ```
 
 ## Project structure
@@ -131,7 +129,9 @@ PayNest/
 - Order items validate that products are present and quantities are positive.
 - The catalogue validates products and returns `Optional` for lookups that may not find a match.
 - Receipt rendering returns a string; the application is responsible for printing it.
-- Payment implementations share the `PaymentMethod` interface, allowing checkout to use different simulated methods.
+- Payment implementations share the PaymentMethod interface. This allows checkout to work with any payment rail through polymorphism rather than using one large method with conditional logic for each payment type.
+- New payment methods can be added without changing checkout logic because checkout depends on the PaymentMethod interface rather than a concrete payment class.
+- To add a new payment rail, create a class that implements PaymentMethod and wire that implementation into PayNestApplication.
 
 ## Testing 
 PayNest includes automated tests for important application functionality.

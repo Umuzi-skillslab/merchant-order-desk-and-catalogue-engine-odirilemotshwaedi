@@ -15,14 +15,10 @@ public class TestPaymentMethod implements PaymentMethod {
     //Simulates payment processing for testing purposes.
     @Override
     public boolean processPayment(BigDecimal amount) {
-        if(amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
-            return false;
-        }
 
         this.receivedAmount = amount;
         return true;
     }
-
 
     //Returns the name of this test payment method.
     @Override
