@@ -71,7 +71,7 @@ class PaymentMethodTest {
         PrintStream originalOut = System.out;
 
         System.setOut(new PrintStream(output));
-        
+
         try (PrintStream capturedOut = new PrintStream(output)) {
             System.setOut(capturedOut);
             assertFalse(order.checkout(failedPaymentMethod));
@@ -81,6 +81,6 @@ class PaymentMethodTest {
 
         String checkoutOutput = output.toString();
         assertTrue(checkoutOutput.contains("Payment failed via Failed"));
-        assertFalse(checkoutOutput.contains("Order #1 completed successfully"));
+        assertFalse(checkoutOutput.contains("completed successfully"));
     }
 }

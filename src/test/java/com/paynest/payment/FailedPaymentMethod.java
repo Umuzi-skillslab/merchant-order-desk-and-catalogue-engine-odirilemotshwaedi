@@ -3,8 +3,8 @@ package com.paynest.payment;
 import java.math.BigDecimal;
 
 public class FailedPaymentMethod implements PaymentMethod{
-    
-    @Override 
+
+    @Override
     public boolean processPayment(BigDecimal amount){
         return false;
     }

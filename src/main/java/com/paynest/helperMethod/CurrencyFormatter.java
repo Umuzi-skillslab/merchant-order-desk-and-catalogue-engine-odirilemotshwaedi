@@ -1,4 +1,4 @@
-package com.paynest.payment;
+package com.paynest.helperMethod;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -6,7 +6,9 @@ import java.util.Locale;
 
 public final class CurrencyFormatter {
 
-    //Prevent instantiation of this unility class
+    /**
+    * Prevents instantiation of this utility class.
+    */
     private CurrencyFormatter() {
     }
 

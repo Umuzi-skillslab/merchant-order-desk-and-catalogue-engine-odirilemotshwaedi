@@ -34,10 +34,6 @@ Important: Payment processing is simulated. The application prints payment resul
 
 git clone https://github.com/Umuzi-skillslab/merchant-order-desk-and-catalogue-engine-odirilemotshwaedi.git
 
-# Navigate to the project directory
-
-cd PayNest
-
 # Compile the application
 
 mvn compile
@@ -125,16 +121,17 @@ PayNest/
 
 ## Design notes
 
-- Product prices and order totals use `BigDecimal` to avoid floating-point money calculations.
+- Product prices and order totals use BigDecimal to avoid floating-point money calculations.
 - Order items validate that products are present and quantities are positive.
-- The catalogue validates products and returns `Optional` for lookups that may not find a match.
+- The catalogue validates products and returns Optional for lookups that may not find a match.
 - Receipt rendering returns a string; the application is responsible for printing it.
-- Payment implementations share the PaymentMethod interface. This allows checkout to work with any payment rail through polymorphism rather than using one large method with conditional logic for each payment type.
-- New payment methods can be added without changing checkout logic because checkout depends on the PaymentMethod interface rather than a concrete payment class.
+- Payment implementations share the PaymentMethod interface. This allows checkout to work with any payment rail through polymorphism rather than relying on a large method containing conditional logic for every payment type.
+- Checkout depends on the PaymentMethod abstraction rather than concrete payment classes, reducing coupling and making the payment flow easier to maintain.
+- New payment methods can be added without changing checkout logic because checkout depends on the PaymentMethod interface.
 - To add a new payment rail, create a class that implements PaymentMethod and wire that implementation into PayNestApplication.
 
-## Testing 
-PayNest includes automated tests for important application functionality.
+## Testing
+PayNest includes automated tests that verify order validation, receipt generation, payment-method polymorphism, and checkout behavior.
 
 ```bash
 # Run the complete test suite using:

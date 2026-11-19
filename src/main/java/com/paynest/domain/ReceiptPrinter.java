@@ -1,6 +1,6 @@
 package com.paynest.domain;
 
-import com.paynest.payment.CurrencyFormatter;
+import com.paynest.helperMethod.CurrencyFormatter;
 
 //Formats order information as a receipt
 public class ReceiptPrinter {

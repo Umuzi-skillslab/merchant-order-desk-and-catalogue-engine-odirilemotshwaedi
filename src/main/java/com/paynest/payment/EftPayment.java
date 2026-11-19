@@ -2,6 +2,8 @@ package com.paynest.payment;
 
 import java.math.BigDecimal;
 
+import com.paynest.helperMethod.CurrencyFormatter;
+
 /**
  * Handles simulated EFT payments
  * Implements the shared PaymentMethod interface to ensure

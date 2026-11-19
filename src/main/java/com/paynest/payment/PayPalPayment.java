@@ -2,6 +2,8 @@ package com.paynest.payment;
 
 import java.math.BigDecimal;
 
+import com.paynest.helperMethod.CurrencyFormatter;
+
 /**
  * Handles simulated PayPal payments
  * Implements the shared PaymentMethod interface to ensure
