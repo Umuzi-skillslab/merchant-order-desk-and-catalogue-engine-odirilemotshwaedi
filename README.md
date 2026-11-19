@@ -85,19 +85,21 @@ PayNest/
 │   │           │   └── PayNestApplication.java
 │   │           │
 │   │           ├── domain/
-│   │           │   ├── Product.java
 │   │           │   ├── Customer.java
 │   │           │   ├── Order.java
-│   │           │   └── OrderItem.java
+│   │           │   ├── OrderItem.java
+│   │           │   └── Product.java
+│   │           │
+│   │           ├── helperMethod/
+│   │           │   ├── CurrencyFormatter.java
 │   │           │
 │   │           ├── payment/
+│   │           │   ├── CardPayment.java 
+│   │           │   ├── EftPayment.java 
 │   │           │   ├── PaymentMethod.java
 │   │           │   ├── PaymentProcessor.java
-│   │           │   ├── CardPayment.java
-│   │           │   ├── WalletPayment.java
 │   │           │   ├── PayPalPayment.java
-│   │           │   ├── EftPayment.java
-│   │           │   └── CurrencyFormatter.java
+│   │           │   └── WalletPayment.java
 │   │           │
 │   │           └── service/
 │   │               ├── CatalogueService.java
@@ -108,6 +110,7 @@ PayNest/
 │       └── java/
 │           └── com/paynest/
 │               ├── payment/
+│               |   ├── FailedPaymentMEthod.java
 │               │   └── TestPaymentMethod.java
 │               │
 │               └── service/
