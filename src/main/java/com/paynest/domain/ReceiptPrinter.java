@@ -50,7 +50,7 @@ public class ReceiptPrinter {
                 .append(" x (Qty)")
                 .append(item.getQuantity())
                 .append(" = ")
-                .append(formatCurrency(item.calculateTotal()));
+                .append(CurrencyFormatter.format(item.calculateTotal()));
         }
 
         //Add the grand total.
@@ -58,7 +58,7 @@ public class ReceiptPrinter {
         grandTotal.append(RECEIPT_SEPARATOR)
             .append("\n")
             .append("Grand Total: ")
-            .append(formatCurrency(order.calculateTotalAmount()))
+            .append(CurrencyFormatter.format(order.calculateTotalAmount()))
             .append(RECEIPT_SEPARATOR);
 
         //Add the payment section heading
@@ -73,10 +73,5 @@ public class ReceiptPrinter {
             .append(orderItems)
             .append(grandTotal)
             .append(paymentBuilder).toString();
-    }
-
-    //Format an amount as a South African Rand.
-    private String formatCurrency(java.math.BigDecimal amount) {
-        return CurrencyFormatter.format(amount);
     }
 }
