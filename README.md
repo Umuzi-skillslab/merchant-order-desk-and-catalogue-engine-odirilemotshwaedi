@@ -91,11 +91,11 @@ PayNest/
 │   │           │   └── Product.java
 │   │           │
 │   │           ├── helperMethod/
-│   │           │   ├── CurrencyFormatter.java
+│   │           │   └── CurrencyFormatter.java
 │   │           │
 │   │           ├── payment/
-│   │           │   ├── CardPayment.java 
-│   │           │   ├── EftPayment.java 
+│   │           │   ├── CardPayment.java
+│   │           │   ├── EftPayment.java
 │   │           │   ├── PaymentMethod.java
 │   │           │   ├── PaymentProcessor.java
 │   │           │   ├── PayPalPayment.java
